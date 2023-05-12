@@ -14,6 +14,13 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/CHOUPAGUY/hello-word-2023.git'
             }
         }
+        stage('Sonarqube scan') {
+            steps{
+            withSonarQubeEnv('sonar') {
+          sh ''
+            }
+            }
+        }
         stage('Code Build') {
             steps {
                 sh 'mvn clean install package'
