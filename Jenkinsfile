@@ -4,7 +4,7 @@ pipeline {
         maven 'M2_HOME'
     }
     environment {
-    registry = '981162472741.dkr.ecr.us-east-1.amazonaws.com/devops-terraform'
+    registry = '981162472741.dkr.ecr.us-east-1.amazonaws.com/hello-word'
     registryCredential = 'aws-credentials'
     dockerimage = ''
   }
@@ -16,8 +16,8 @@ pipeline {
         }
         stage('Sonarqube scan') {
             steps{
-            withSonarQubeEnv('sonar') {
-          sh ''
+            withSonarQubeEnv('SonarServer') {
+          sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=CHOUPAGUY_hello-word-2023'
             }
             }
         }
