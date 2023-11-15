@@ -16,7 +16,7 @@ pipeline {
         }
         stage('Sonarqube scan') {
             steps{
-            withSonarQubeEnv('SonarServer') {
+            withSonarQubeEnv('Sonar') {
           sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=CHOUPAGUY_hello-word-2023'
             }
             }
